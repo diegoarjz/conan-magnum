@@ -150,6 +150,9 @@ class LibnameConan(ConanFile):
         if self.options.with_glfwapplication:
             self.requires("glfw/3.3.2@bincrafters/stable")
 
+        if self.settings.os == "Macos":
+            self.options.with_cglcontext = True
+
     def source(self):
         source_url = "https://github.com/mosra/magnum"
         tools.get("{0}/archive/v{1}.tar.gz".format(source_url, self.version))
