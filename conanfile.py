@@ -39,7 +39,7 @@ class LibnameConan(ConanFile):
     # Options may need to change depending on the packaged library.
     settings = "os", "arch", "compiler", "build_type"
     options = {
-        "shared": [True, False], 
+        "shared": [True, False],
         "fPIC": [True, False],
         "build_deprecated": [True, False],
         "build_multithreaded": [True, False],
@@ -56,6 +56,7 @@ class LibnameConan(ConanFile):
         "with_eglcontext": [True, False],
         "with_fontconverter": [True, False],
         "with_glfwapplication": [True, False],
+        "with_cglcontext": [True, False],
         "with_glxapplication": [True, False],
         "with_glxcontext": [True, False],
         "with_gl_info": [True, False],
@@ -79,7 +80,7 @@ class LibnameConan(ConanFile):
         "with_xeglapplication": [True, False],
     }
     default_options = {
-        "shared": False, 
+        "shared": False,
         "fPIC": True,
         "build_deprecated": False,
         "build_multithreaded": True,
@@ -96,6 +97,7 @@ class LibnameConan(ConanFile):
         "with_eglcontext": False,
         "with_fontconverter": False,
         "with_glfwapplication": False,
+        "with_cglcontext": False,
         "with_glxapplication": False,
         "with_glxcontext": False,
         "with_gl_info": False,
@@ -107,7 +109,7 @@ class LibnameConan(ConanFile):
         "with_opengltester": False,
         "with_primitives": True,
         "with_scenegraph": True,
-        "with_sdl2application": True,
+        "with_sdl2application": False,
         "with_shaders": True,
         "with_text": True,
         "with_tgaimageconverter": False,
@@ -162,7 +164,7 @@ class LibnameConan(ConanFile):
         def add_cmake_option(option, value):
             var_name = "{}".format(option).upper()
             value_str = "{}".format(value)
-            var_value = "ON" if value_str == 'True' else "OFF" if value_str == 'False' else value_str 
+            var_value = "ON" if value_str == 'True' else "OFF" if value_str == 'False' else value_str
             cmake.definitions[var_name] = var_value
             print("{0}={1}".format(var_name, var_value))
 
@@ -191,7 +193,7 @@ class LibnameConan(ConanFile):
 
         # This didn't work correctly in combination with generator 'cmake_find_package', and don't wanna spend time on it now.
         # Will use the conan-generated find-script instead (which works).
-        
+
         #share_cmake = os.path.join(self.package_folder, "share", "cmake", "Magnum")
         #self.copy("MagnumConfig.cmake", src=share_cmake, dst=os.path.join(self.package_folder, "lib", "cmake", "Magnum"))
         #self.copy("FindMagnum.cmake", src=share_cmake, dst=os.path.join(self.package_folder, "lib", "cmake", "Magnum"))
@@ -235,7 +237,7 @@ class LibnameConan(ConanFile):
             "MagnumOpenGLTester",
             "MagnumText",
         ]
-        
+
         # Sort all built libs according to above, and reverse result for correct link order
         suffix = '-d' if self.settings.build_type == "Debug" else ''
         builtLibs = tools.collect_libs(self)
