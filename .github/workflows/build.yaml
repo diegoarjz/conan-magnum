@@ -14,12 +14,15 @@ jobs:
         run: |
             pip3 install wheel setuptools
             pip3 install conan
+            conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
             conan remote add helmesjo "https://api.bintray.com/conan/helmesjo/public-conan"
       - name: Build
         run: |
           conan create . \
                 pagoda/stable \
                 -o magnum:with_cglcontext=True \
+                -o magnum:with_sdl2application=False \
+                -o magnum:with_glfwapplication=False \
                 --build=missing
       - name: Upload
         run: |
