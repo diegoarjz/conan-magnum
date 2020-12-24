@@ -57,6 +57,7 @@ class LibnameConan(ConanFile):
         "with_fontconverter": [True, False],
         "with_glfwapplication": [True, False],
         "with_cglcontext": [True, False],
+        "with_wglcontext": [True, False],
         "with_glxapplication": [True, False],
         "with_glxcontext": [True, False],
         "with_gl_info": [True, False],
@@ -98,6 +99,7 @@ class LibnameConan(ConanFile):
         "with_fontconverter": False,
         "with_glfwapplication": False,
         "with_cglcontext": False,
+        "with_wglcontext": False,
         "with_glxapplication": False,
         "with_glxcontext": False,
         "with_gl_info": False,
@@ -152,6 +154,8 @@ class LibnameConan(ConanFile):
 
         if self.settings.os == "Macos":
             self.options.with_cglcontext = True
+        elif self.settings.os == "Windows":
+            self.options.with_wglcontext = True
 
     def source(self):
         source_url = "https://github.com/mosra/magnum"
