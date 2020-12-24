@@ -18,9 +18,7 @@ jobs:
             conan remote add helmesjo "https://api.bintray.com/conan/helmesjo/public-conan"
       - name: Build
         run: |
-          conan create . \
-                pagoda/stable \
-                --build=missing
+          conan create . pagoda/stable --build=missing
       - name: Upload
         run: |
           conan remote add pagoda https://api.bintray.com/conan/diegoarjz/Pagoda
@@ -44,9 +42,7 @@ jobs:
             conan remote add helmesjo "https://api.bintray.com/conan/helmesjo/public-conan"
       - name: Build
         run: |
-          conan create . \
-                pagoda/stable \
-                --build=missing
+          conan create . pagoda/stable --build=missing
       - name: Upload
         run: |
           conan remote add pagoda https://api.bintray.com/conan/diegoarjz/Pagoda
