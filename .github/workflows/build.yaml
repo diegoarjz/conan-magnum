@@ -41,8 +41,8 @@ jobs:
           conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
           conan remote add helmesjo https://api.bintray.com/conan/helmesjo/public-conan
       - name: Build
-          run: |
-            conan create . pagoda/stable --build=missing
+        run: |
+          conan create . pagoda/stable --build=missing
       - name: Upload
         run: |
           conan remote add pagoda https://api.bintray.com/conan/diegoarjz/Pagoda
