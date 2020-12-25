@@ -15,7 +15,7 @@ jobs:
           pip3 install wheel setuptools
           pip3 install conan
           conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
-          conan remote add helmesjo "https://api.bintray.com/conan/helmesjo/public-conan"
+          conan remote add helmesjo https://api.bintray.com/conan/helmesjo/public-conan
       - name: Build
         run: |
           conan create . pagoda/stable --build=missing
@@ -39,10 +39,10 @@ jobs:
           pip3 install wheel setuptools
           pip3 install conan
           conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
-          conan remote add helmesjo "https://api.bintray.com/conan/helmesjo/public-conan"
-    - name: Build
-        run: |
-          conan create . pagoda/stable --build=missing
+          conan remote add helmesjo https://api.bintray.com/conan/helmesjo/public-conan
+      - name: Build
+          run: |
+            conan create . pagoda/stable --build=missing
       - name: Upload
         run: |
           conan remote add pagoda https://api.bintray.com/conan/diegoarjz/Pagoda
@@ -63,7 +63,7 @@ jobs:
           pip3 install conan
           export PATH=$PATH:/home/runner/.local/bin
           conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
-          conan remote add helmesjo "https://api.bintray.com/conan/helmesjo/public-conan"
+          conan remote add helmesjo https://api.bintray.com/conan/helmesjo/public-conan
       - name: Build
         run: |
           export PATH=$PATH:/home/runner/.local/bin
