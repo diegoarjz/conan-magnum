@@ -157,6 +157,8 @@ class LibnameConan(ConanFile):
             self.options.with_cglcontext = True
         elif self.settings.os == "Windows":
             self.options.with_wglcontext = True
+        elif self.settings.os == "Linux":
+            self.options.with_glxcontext = True
 
     def source(self):
         source_url = "https://github.com/mosra/magnum"
